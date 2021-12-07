@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        p {
+            margin-left: 20px;
+        }
+
+        h1 {
+            margin-left: 20px;
+        }
+
+        input[type="submit"] {
+            margin-left: 20px;
+        }
+    </style>
     <head>
         <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

@@ -7,6 +7,6 @@
         @csrf
         <p>Title: <input type="text" name="title" value="{{ old('title') }}"></p>
         <p>Body: <input type="text" name="body" value="{{ old('body') }}"></p>
-        <button type="submit" value="SUBMIT">SUBMIT</button>
+        <input type="submit" value="SUBMIT" class="btn btn-primary">
     </form>
 @endsection
