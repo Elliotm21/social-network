@@ -70,12 +70,19 @@ class PostController extends Controller
         return redirect()->route('posts.show', $post);
     }
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::findOrFail($id);
-        $post->delete();
-
-        return redirect()->route('posts.index')->with('message', 'Post was deleted!');
+        if (Auth::id() == $post->user_id)
+        {
+            $post->delete();
+            session()->flash('message', 'Post was deleted!');
+            return redirect()->route('posts.index');
+        }
+        else
+        {
+            session()->flash('message', 'You cannot delete a post that does not belong to you!');
+            return redirect()->route('posts.show', $post);
+        }
     }
 
     public function page()

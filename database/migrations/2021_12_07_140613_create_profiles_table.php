@@ -11,7 +11,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            // $table->bool('admin'); bool doesn't exist
+            $table->boolean('admin')->default(0);
         });
     }
 

@@ -37,6 +37,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/posts/create">New Post</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Log Out</a>
+          </li>
         </ul>
         
       </div>
@@ -44,7 +50,7 @@
   </div>
   <!-- navigation bar ends here -->
 
-  <h1>@yield('title')</h1>
+    <h1>@yield('title')</h1>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

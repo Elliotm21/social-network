@@ -10,7 +10,7 @@
     <p>{{ $post-> body }}</p>
     <p>- {{ $post->user->name }} ({{ $post->created_at }})</p>
 
-    <form method="POST" action="{{ route('posts.destroy', ['id' => $post->id]) }}">
+    <form method="POST" action="{{ route('posts.destroy', $post) }}">
         @csrf
         @method('DELETE')
         <input type="submit" value="DELETE" class="btn btn-primary">
