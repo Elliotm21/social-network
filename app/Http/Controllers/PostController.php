@@ -50,7 +50,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('posts.edit', ['post' => $post]);
+        return view('posts.edit', ['post' => $post]); 
     }
 
     public function update(Request $request, Post $post)
@@ -66,7 +66,7 @@ class PostController extends Controller
         $post->body = $validatedData['body'];
         $post->save();
 
-        session()->flash('message', 'Thread Edited.');
+        session()->flash('message', 'Post Edited.');
         return redirect()->route('posts.show', $post);
     }
 

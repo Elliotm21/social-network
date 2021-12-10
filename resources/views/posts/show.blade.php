@@ -10,9 +10,12 @@
 
     <form method="POST" action="{{ route('posts.destroy', $post) }}">
         @csrf
+        <a href="{{ route('posts.edit', $post) }}">EDIT</a>
         @method('DELETE')
         <input type="submit" value="DELETE" class="btn btn-primary">
     </form>
+
+    <hr>
 
     <!-- COMMENTS -->
 
@@ -22,8 +25,6 @@
         <hr>
     @endforeach
 
-    <hr>
-
     <!-- LEAVING A COMMENT -->
 
     <p><b>Leave a comment!</b></p>
@@ -32,6 +33,7 @@
         @csrf
         <p><textarea name="text" rows="4" cols="30">{{ old('text') }}</textarea></p>
         <input type="submit" value="SUBMIT" class="btn btn-primary">
+        <hr>
     </form>
 
 @endsection

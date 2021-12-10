@@ -4,7 +4,7 @@
 
 @section('content')
         @foreach ($posts as $post)
-            <p><a href="">{{$post->user->name}}</a></p>
+            <p><a href="" style="display: inline">{{$post->user->name}}</a> ({{ $post->created_at }})</p>
             <p><b><a href="{{ route('posts.show', $post) }}">{{$post->title}}</a></b></p>
             <hr>
         @endforeach
