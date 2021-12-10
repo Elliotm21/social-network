@@ -3,14 +3,14 @@
 @section('title', 'Home')
 
 @section('content')
-        <ul>
-            @foreach ($posts as $post)
-                <li><a href="{{ route('posts.show', $post) }}">{{$post->title}}</a></li>
-            @endforeach
-        </ul>
+        @foreach ($posts as $post)
+            <p><a href="">{{$post->user->name}}</a></p>
+            <p><b><a href="{{ route('posts.show', $post) }}">{{$post->title}}</a></b></p>
+            <hr>
+        @endforeach
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <input type="submit" value="LOGOUT" class="btn btn-primary">
+            <input type="submit" value="LOG OUT" class="btn btn-primary">
         </form>
 @endsection

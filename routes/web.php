@@ -29,11 +29,6 @@ Route::post('logout', [UserController::class, 'logout'])->name('logout');
 Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
 Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
 
-// Navbar
-Route::get('home', [FrontController::class, 'home'])->name('home');
-Route::get('products', [FrontController::class, 'products'])->name('products.index');
-Route::get('about-us', [FrontController::class, 'aboutUs'])->name('about.us');
-
 Route::get('posts1', [PostController::class, 'page']);
 
 Route::get('/dashboard', function () {

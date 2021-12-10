@@ -41,7 +41,12 @@
             <a class="nav-link" href="/profile">My Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/profile">Log Out</a>
+              <a class="nav-link" href="{{ route('logout') }}">Log ut</a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+      </form>
+            </form>
           </li>
         </ul>
         
@@ -50,7 +55,11 @@
   </div>
   <!-- navigation bar ends here -->
 
+    <br>
+
     <h1>@yield('title')</h1>
+
+    <hr>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

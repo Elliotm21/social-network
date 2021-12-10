@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Post Details')
+@section('title', $post->title)
 
 @section('content')
 
     <!-- POST -->
-
-    <p><b>{{ $post-> title }}</b></p>
+    <p><a href="" style="display: inline">{{$post->user->name}}</a> ({{ $post->created_at }})</p>
     <p>{{ $post-> body }}</p>
-    <p>- {{ $post->user->name }} ({{ $post->created_at }})</p>
 
     <form method="POST" action="{{ route('posts.destroy', $post) }}">
         @csrf
@@ -18,12 +16,13 @@
 
     <!-- COMMENTS -->
 
-    <p><b>Comments</b></p>
-
     @foreach ($post->comments as $comment) 
-        <p>{{ $comment->text }}</p>
-        <p>- {{ $comment->user->name }} ({{ $comment->created_at }})</p>
+        <p><a href="" style="display: inline">{{$comment->user->name}}</a> ({{ $comment->created_at }})</p>
+        <p>{{ $comment-> text }}</p>
+        <hr>
     @endforeach
+
+    <hr>
 
     <!-- LEAVING A COMMENT -->
 
