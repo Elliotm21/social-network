@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -17,14 +18,12 @@ class ImageUploadController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
-        $imageName = time().'.'.$request->image->extension();  
+        $imageName = Auth::id();  
      
         $request->image->move(public_path('images'), $imageName);
-  
-        /* Store $imageName name in DATABASE from HERE */
-    
+ 
         return back()
             ->with('success','You have successfully upload image.')
-            ->with('image',$imageName); 
+            ->with('image', $imageName); 
     }
 }

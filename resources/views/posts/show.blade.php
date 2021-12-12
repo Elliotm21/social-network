@@ -5,6 +5,8 @@
 @section('content')
 
     <!-- POST -->
+    
+    <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
     <p><a href="{{ route('users.show', $post->user) }}" style="display: inline">{{$post->user->name}}</a> ({{ $post->created_at }})</p>
     <p>{{ $post-> body }}</p>
 
@@ -21,6 +23,7 @@
     <p><b>Comments</b></p>
     <hr>
     @foreach ($post->comments as $comment) 
+        <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
         <p><a href="{{ route('users.show', $comment->user) }}" style="display: inline">{{$comment->user->name}}</a> ({{ $comment->created_at }})</p>
         <p>{{ $comment-> text }}</p>
         <hr>

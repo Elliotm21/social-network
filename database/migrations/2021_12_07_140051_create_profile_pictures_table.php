@@ -11,6 +11,7 @@ class CreateProfilePicturesTable extends Migration
         Schema::create('profile_pictures', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->file_path();
         });
     }
 

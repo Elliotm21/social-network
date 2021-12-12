@@ -16,14 +16,12 @@
         .iconDetails {
           margin-left:2%;
           float:left; 
-          height:60px;
-          width:60px; 
+          height:70px;
+          width:70px; 
         } 
 
         .container2 {
             width:100%;
-            height:auto;
-            padding:1%;
         }
 
     </style>
