@@ -13,6 +13,19 @@
             margin-left: 20px;
         }
 
+        .iconDetails {
+          margin-left:2%;
+          float:left; 
+          height:60px;
+          width:60px; 
+        } 
+
+        .container2 {
+            width:100%;
+            height:auto;
+            padding:1%;
+        }
+
     </style>
     <head>
         <meta charset="utf-8">
@@ -38,19 +51,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/posts/create">New Post</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile">My Profile</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{{ route('logout') }}">Log ut</a>
-
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-      </form>
-            </form>
-          </li>
         </ul>
-        
       </div>
     </div>
   </div>

@@ -35,14 +35,6 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('message', 'Post was created!');
     }
 
-    /*
-    public function show($id)
-    {
-        $post = Post::findOrFail($id);
-        return view('show', ['post' => $post]);
-    }
-    */
-
     public function show(Post $post)
     {
         return view('posts.show', ['post' => $post]);
@@ -50,13 +42,19 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('posts.edit', ['post' => $post]); 
+        if (Auth::id() == $post->user_id || auth()->user()->admin)
+        {
+            return view('posts.edit', ['post' => $post]); 
+        }
+        else
+        {
+            session()->flash('message', 'You cannot edit a post that does not belong to you!');
+            return redirect()->route('posts.show', $post);
+        }
     }
 
     public function update(Request $request, Post $post)
     {
-        $id = auth()->user()->id;
-        
         $validatedData = $request->validate([
             'title' => 'required|max:50',
             'body' => 'required|max:255',
@@ -72,7 +70,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        if (Auth::id() == $post->user_id)
+        if (Auth::id() == $post->user_id || auth()->user()->admin)
         {
             $post->delete();
             session()->flash('message', 'Post was deleted!');

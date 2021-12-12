@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- POST -->
-    <p><a href="" style="display: inline">{{$post->user->name}}</a> ({{ $post->created_at }})</p>
+    <p><a href="{{ route('users.show', $post->user) }}" style="display: inline">{{$post->user->name}}</a> ({{ $post->created_at }})</p>
     <p>{{ $post-> body }}</p>
 
     <form method="POST" action="{{ route('posts.destroy', $post) }}">
@@ -18,9 +18,10 @@
     <hr>
 
     <!-- COMMENTS -->
-
+    <p><b>Comments</b></p>
+    <hr>
     @foreach ($post->comments as $comment) 
-        <p><a href="" style="display: inline">{{$comment->user->name}}</a> ({{ $comment->created_at }})</p>
+        <p><a href="{{ route('users.show', $comment->user) }}" style="display: inline">{{$comment->user->name}}</a> ({{ $comment->created_at }})</p>
         <p>{{ $comment-> text }}</p>
         <hr>
     @endforeach
