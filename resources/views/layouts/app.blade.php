@@ -24,6 +24,41 @@
             width:100%;
         }
 
+        .logoutLblPos{
+          position:fixed;
+          right:10px;
+          top:5px;
+        }
+
+        .btn-group button {
+  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+  .comment {
+    background-color: #F5F5F5;
+  }
+
     </style>
     <head>
         <meta charset="utf-8">
@@ -38,6 +73,7 @@
     <body class="font-sans antialiased">
 
           <!-- navigation bar -->
+          <div class="comment">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 offset-sm-3 col-md-6 offset-md-3">
@@ -49,11 +85,23 @@
           <li class="nav-item">
             <a class="nav-link" href="/posts/create">New Post</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('notifications.show', Auth::user()) }}">Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('users.show', Auth::user()) }}">My Profile</a>
+          </li>
         </ul>
       </div>
     </div>
   </div>
+  </div>
   <!-- navigation bar ends here -->
+
+  <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <input type="submit" value="LOG OUT" class="logoutLblPos">
+    </form>
 
     <br>
 

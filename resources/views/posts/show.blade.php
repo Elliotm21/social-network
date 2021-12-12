@@ -3,31 +3,37 @@
 @section('title', $post->title)
 
 @section('content')
-
     <!-- POST -->
     
     <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
     <p><a href="{{ route('users.show', $post->user) }}" style="display: inline">{{$post->user->name}}</a> ({{ $post->created_at }})</p>
     <p>{{ $post-> body }}</p>
 
-    <form method="POST" action="{{ route('posts.destroy', $post) }}">
-        @csrf
-        <a href="{{ route('posts.edit', $post) }}">EDIT</a>
-        @method('DELETE')
-        <input type="submit" value="DELETE" class="btn btn-primary">
-    </form>
+    <br>
+    <div class="btn-group">
+    <input type="submit" value="EDIT">
+    <input type="submit" value="DELETE">
+</div>
 
     <hr>
 
     <!-- COMMENTS -->
-    <p><b>Comments</b></p>
-    <hr>
+
+    <p><b>Comments ({{ $post->comments->count() }})</b></p>
     @foreach ($post->comments as $comment) 
+        <div class="comment">
+        <hr>
         <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
         <p><a href="{{ route('users.show', $comment->user) }}" style="display: inline">{{$comment->user->name}}</a> ({{ $comment->created_at }})</p>
         <p>{{ $comment-> text }}</p>
         <hr>
+        <p>
+    </div>
     @endforeach
+
+    @if ($post->comments->count() == 0)
+        <p>There are no comments. Be the first to make one!</p>
+    @endif
 
     <!-- LEAVING A COMMENT -->
 

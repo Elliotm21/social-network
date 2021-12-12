@@ -33,6 +33,7 @@ Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])
 
 // Profile
 Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('notifications/{user}', [UserController::class, 'show'])->name('notifications.show');
 
 Route::get('posts1', [PostController::class, 'page']);
 

@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<html>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Image Upload')
+
+@section('content')
 <div class="container">
      
     <div class="panel panel-primary">
@@ -44,5 +46,4 @@
       </div>
     </div>
 </div>
-</body>
-</html>
+@endsection

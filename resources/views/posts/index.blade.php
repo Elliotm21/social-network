@@ -15,9 +15,4 @@
             </div>
             <hr>
         @endforeach
-
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <input type="submit" value="LOG OUT" class="btn btn-primary">
-        </form>
 @endsection
