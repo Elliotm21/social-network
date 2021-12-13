@@ -62,6 +62,10 @@
     background-color: #F5F5F5;
   }
 
+  .center {
+    margin-left:20px;
+  }
+
     </style>
     <head>
         <meta charset="utf-8">

@@ -11,7 +11,7 @@ class PostController extends Controller
     public function index()
     {
         // Pushes most recent posts to the top
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $posts = Post::paginate(5);
         return view('posts.index', ['posts' => $posts]);
     }
 
