@@ -10,7 +10,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        // Pushes most recent posts to the top
+        $posts = Post::orderBy('created_at', 'DESC')->get();
         return view('posts.index', ['posts' => $posts]);
     }
 

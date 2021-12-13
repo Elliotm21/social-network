@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,6 +35,9 @@ Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])
 // Profile
 Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
 Route::get('notifications/{user}', [UserController::class, 'show'])->name('notifications.show');
+
+// Notifications
+Route::get('send', [NotificationController::class, 'sendNotification'])->name('notification.send');
 
 Route::get('posts1', [PostController::class, 'page']);
 

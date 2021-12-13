@@ -14,7 +14,6 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('body');
             // $table->integer('views');
-            // $table->integer('likes')
             $table->timestamps();
 
             $table->foreignId('user_id')->references('id')->

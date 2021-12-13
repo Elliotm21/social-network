@@ -6,9 +6,10 @@
     <p><b>Profile Picture</b></p>
     <img src="{{ asset('images/'.$user->id) }}" class="iconDetails">
 
+    <br><br><br>
+
 @if (Auth::id() == $user->id)
 
-    <br><br><br>
     <form method="GET" action="{{ route('image.upload') }}">
         @csrf
         <input type="submit" value="UPDATE" class="btn btn-primary">
@@ -19,6 +20,6 @@
     <hr>
     <p><b>Admin: </b>{{ $user->admin }}</p>
     <p><b>Profile views: </b>X</p>
-    <p><b>Posts made: </b>X</p>
-    <p><b>Comments made: </b>X</p>
+    <p><b>Posts made: </b>{{ $user->posts->count() }}</p>
+    <p><b>Comments made: </b>{{ $user->comments->count() }}</p>
 @endsection
