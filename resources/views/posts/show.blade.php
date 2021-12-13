@@ -11,11 +11,19 @@
     <p>{{ $post-> body }}</p>
 
     <br>
-    <div class="btn-group">
-    <input type="submit" value="EDIT">
-    <input type="submit" value="DELETE">
 
-</div>
+    <div class="btn-group">
+        <input type="submit" value="EDIT">
+        <input type="submit" value="DELETE">
+    </div>
+
+    <br>
+    <br>
+
+    <form method="POST" action="{{ route('likes.store', $post) }}">
+        @csrf
+        <input type="submit" value="LIKE" class="btn btn-primary">
+    </form>
 
     <hr>
 
@@ -52,12 +60,6 @@
         @csrf
         <p><textarea name="text" rows="4" cols="30">{{ old('text') }}</textarea></p>
         <input type="submit" value="SUBMIT" class="btn btn-primary">
-        <hr>
-    </form>
-
-    <form method="POST" action="{{ route('likes.store', $post) }}">
-        @csrf
-        <input type="submit" value="LIKE" class="btn btn-primary">
         <hr>
     </form>
 

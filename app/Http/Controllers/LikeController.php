@@ -21,13 +21,29 @@ class LikeController extends Controller
 
     public function store(Request $request, Post $post)
     {
-        $l = new Like;
-        $l->user_id = Auth::id();
-        $l->post_id = $post->id;
-        $l->save();
+        // Get the current likes on the post by the user
+        $likes = Like::select('id')
+            ->where('user_id', Auth::id())
+            ->where('post_id', $post->id)
+            ->get();
 
-        session()->flash('message', 'Post liked.');
-        return redirect()->route('posts.show', $post);
+        if (count($likes) == 0) // If the user has not liked the post
+        {
+            // Allow the like
+            $l = new Like;
+            $l->user_id = Auth::id();
+            $l->post_id = $post->id;
+            $l->save();
+    
+            session()->flash('message', 'Post liked.');
+            return redirect()->route('posts.show', $post);
+        }
+        else // If the user has already liked the post
+        {
+            // Don't allow the like
+            session()->flash('message', 'You have already liked this post.');
+            return redirect()->route('posts.show', $post);
+        }
     }
 
     public function show($id)
