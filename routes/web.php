@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,6 +23,7 @@ Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.ed
 Route::post('posts/{post}/edit', [PostController::class, 'update'])->name('posts.update');
 
 // Comments
+Route::post('likes/{post}', [LikeController::class, 'store'])->name('likes.store');
 Route::post('posts/{post}', [CommentController::class, 'store'])->name('comments.store');
 
 // Logging out

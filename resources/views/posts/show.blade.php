@@ -14,7 +14,12 @@
     <div class="btn-group">
     <input type="submit" value="EDIT">
     <input type="submit" value="DELETE">
+
 </div>
+
+    <hr>
+
+    <p>Likes ({{ $post->likes->count() }})</p>
 
     <hr>
 
@@ -42,11 +47,17 @@
     @if ($post->comments->count() > 0)
         <p><b>Leave a comment!</b></p>
     @endif
-                
+    
     <form method="POST" action="{{ route('comments.store', $post) }}">
         @csrf
         <p><textarea name="text" rows="4" cols="30">{{ old('text') }}</textarea></p>
         <input type="submit" value="SUBMIT" class="btn btn-primary">
+        <hr>
+    </form>
+
+    <form method="POST" action="{{ route('likes.store', $post) }}">
+        @csrf
+        <input type="submit" value="LIKE" class="btn btn-primary">
         <hr>
     </form>
 
