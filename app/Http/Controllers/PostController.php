@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -93,5 +94,15 @@ class PostController extends Controller
     {
         $posts = Post::all();
         return $posts;
+    }
+
+    public function like(Request $request, Post $post)
+    {
+        $like = new Like;
+        $like->user_id = $post->id;
+        $post->likes()->save($like);
+    
+        session()->flash('message', 'Post liked.');
+        return redirect()->route('posts.show', $post);
     }
 }

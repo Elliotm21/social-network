@@ -13,6 +13,13 @@ Route::get('/', function () {
     return redirect('/posts');
 });
 
+Route::prefix('projects')->group(function () {
+    Route::get('apiwithoutkey', [ProjectController::class, 'apiWithoutKey'])->name('apiWithoutKey');
+    Route::get('apiwithkey', [ProjectController::class, 'apiWithKey'])->name('apiWithKey');
+});
+
+Route::resource('projects', ProjectController::class);
+
 // Posts
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
@@ -23,7 +30,8 @@ Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.ed
 Route::post('posts/{post}/edit', [PostController::class, 'update'])->name('posts.update');
 
 // Comments
-Route::post('likes/{post}', [LikeController::class, 'store'])->name('likes.store');
+Route::post('likes/{post}', [PostController::class, 'like'])->name('posts.like');
+Route::post('likes/post/{comment}', [CommentController::class, 'like'])->name('comments.like');
 Route::post('posts/{post}', [CommentController::class, 'store'])->name('comments.store');
 
 // Logging out
@@ -40,6 +48,9 @@ Route::get('notifications/{user}', [UserController::class, 'show'])->name('notif
 
 // Notifications
 Route::get('send', [NotificationController::class, 'sendNotification'])->name('notification.send');
+
+// API
+Route::post('api', [APIController::class, 'index'])->name('api.index');
 
 Route::get('posts1', [PostController::class, 'page']);
 

@@ -3,6 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
+
 <table class="table table-bordered">
         @if(!empty($posts) && $posts->count())
             @foreach($posts as $key => $value)

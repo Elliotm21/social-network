@@ -18,4 +18,9 @@ class Like extends Model
     {
         return $this->belongsTo('App\Models\Post');
     }
+
+    public function likeable()
+    {
+        return $this->morphTo();
+    }
 }

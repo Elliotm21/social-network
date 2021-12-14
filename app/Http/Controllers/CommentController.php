@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -53,5 +54,15 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function like(Request $request, Comment $comment)
+    {
+        $like = new Like;
+        $like->user_id = $comment->id;
+        $comment->likes()->save($like);
+    
+        session()->flash('message', 'Comment liked.');
+        return redirect()->route('posts.show', $comment->post_id);
     }
 }

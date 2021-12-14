@@ -12,12 +12,11 @@ class CreateLikesTable extends Migration
         {
             $table->id();
             $table->timestamps();
+            $table->integer('likeable_id');
+            $table->string("likeable_type");
 
             $table->foreignId('user_id')->references('id')->
                 on('users')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->foreignId('post_id')->references('id')->
-                on('posts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
