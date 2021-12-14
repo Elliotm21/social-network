@@ -5,29 +5,40 @@
 @section('content')
     <!-- POST -->
     
-    <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
-    <p><a href="{{ route('users.show', $post->user) }}" style="display: inline">
-        {{$post->user->name}}</a> ({{ date('d/m/Y H:i', strtotime($post->created_at)) }})</p>
-    <p>{{ $post-> body }}</p>
-
-    <br>
-
-    <div class="btn-group">
-        <input type="submit" value="EDIT">
-        <input type="submit" value="DELETE">
-    </div>
-
-    <br>
-    <br>
-
-    <form method="POST" action="{{ route('posts.like', $post) }}">
-        @csrf
-        <input type="submit" value="LIKE" class="btn btn-primary">
-    </form>
-
-    <hr>
-
-    <p>Likes ({{ $post->likes->count() }})</p>
+    <table class="gfg">
+        <tr>
+            <td>
+                <br>
+                <form method="POST" action="{{ route('posts.like', $post) }}">
+                    @csrf
+                    <input type="submit" value="LIKE" class="btn btn-primary">
+                </form>
+                <p>Likes ({{ $post->likes->count() }})</p>
+            </td>
+            <td>
+                <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
+                <p><a href="{{ route('users.show', $post->user) }}" style="display: inline">
+                                {{$post->user->name}}</a></p>
+                <div class="small-font">
+                    ({{ date('d/m/Y H:i', strtotime($post->created_at)) }})
+                </div>
+            </td>
+            <td>
+                <p>{{ $post->body }}</p>
+            </td>
+            <td>
+                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                    @csrf
+                    <a href="{{ route('posts.edit', $post) }}">EDIT</a>
+                </form>
+                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-primary">DELETE</button>
+                </form>
+            </td>
+        </tr>
+    </table>
 
     <hr>
 

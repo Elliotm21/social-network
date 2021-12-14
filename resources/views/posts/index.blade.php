@@ -17,9 +17,6 @@
                         </div>
                     </td>
                     <td>
-                        
-                    </td>
-                    <td>
                         <br>
                         <p><a href="{{ route('posts.show', $value) }}">{{$value->title}}</a></b></p>
                     </td>

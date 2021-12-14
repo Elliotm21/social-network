@@ -10,15 +10,13 @@
             }
 
             td {
-                width:150px;
                 text-align:center;
-                padding:5px;
                 background-color: #F5F5F5;
             }
 
         .iconDetails {
           margin-left:50px;
-          margin-right:2%;
+          margin-right:50px;
           float:left; 
           height:70px;
           width:70px; 
@@ -74,15 +72,6 @@
 
   .comment {
     background-color: #F5F5F5;
-  }
-
-  .center {
-    margin-left:50px;
-  }
-
-  .analytics {
-    position: fixed;
-    right:10px;
   }
 
   .small-font {
