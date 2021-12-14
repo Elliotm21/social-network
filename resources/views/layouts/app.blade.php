@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <style>
-        p {
-            margin-left: 20px;
-        }
+      p, h1, input[type="submit"] {
+        margin-left: 20px;
+      }
 
-        h1 {
-            margin-left: 20px;
-        }
+      table {
+                border-collapse: collapse;
+            }
 
-        input[type="submit"] {
-            margin-left: 20px;
-        }
+            td {
+                width:150px;
+                text-align:center;
+                padding:5px;
+                background-color: #F5F5F5;
+            }
 
         .iconDetails {
-          margin-left:2%;
+          margin-left:50px;
           margin-right:2%;
           float:left; 
           height:70px;
@@ -22,6 +25,11 @@
           border-radius: 50%;
           border: 2px solid #808080;
         } 
+
+        .right {
+          position: fixed;
+  right: 0;
+        }
 
         .container2 {
             width:100%;
@@ -32,6 +40,12 @@
           right:10px;
           top:5px;
         }
+
+        .gfg {
+                border-collapse:separate;
+                border-spacing:0 15px;
+                width:100%;
+            }
 
         .btn-group button {
   background-color: #04AA6D; /* Green background */
@@ -63,7 +77,16 @@
   }
 
   .center {
-    margin-left:20px;
+    margin-left:50px;
+  }
+
+  .analytics {
+    position: fixed;
+    right:10px;
+  }
+
+  .small-font {
+    font-size: 12px;
   }
 
     </style>

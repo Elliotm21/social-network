@@ -36,20 +36,19 @@
     <p><b>Comments ({{ $post->comments->count() }})</b></p>
     @foreach ($post->comments as $comment) 
         <div class="comment">
-        <hr>
-        <p>Likes ({{ $comment->likes->count() }})</p>
-        <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
-        <p><a href="{{ route('users.show', $comment->user) }}" style="display: inline">
-            {{$comment->user->name}}</a> ({{ date('d/m/Y H:i', strtotime($comment->created_at)) }})</p>
-        <p>{{ $comment-> text }}</p>
-        <hr>
-        <p>
-    </div>
-    <form method="POST" action="{{ route('comments.like', $post, $comment) }}">
-        @csrf
-        <input type="submit" value="LIKE COMMENT" class="btn btn-primary">
-    </form>
-
+            <hr>
+            <p>Likes ({{ $comment->likes->count() }})</p>
+            <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
+            <p><a href="{{ route('users.show', $comment->user) }}" style="display: inline">
+                {{$comment->user->name}}</a> ({{ date('d/m/Y H:i', strtotime($comment->created_at)) }})</p>
+            <p>{{ $comment-> text }}</p>
+            <hr>
+            <p>
+        </div>
+        <form method="POST" action="{{ route('comments.like', $comment) }}">
+            @csrf
+            <input type="submit" value="LIKE COMMENT" class="btn btn-primary">
+        </form>
     @endforeach
 
     @if ($post->comments->count() == 0)

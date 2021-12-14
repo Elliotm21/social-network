@@ -34,7 +34,8 @@ class PostController extends Controller
         $p->user_id = Auth::id();
         $p->save();
 
-        return redirect()->route('posts.index')->with('message', 'Post was created!');
+        return redirect()->route('posts.index');
+        // ->with('message', 'Post was created!');
     }
 
     public function show(Post $post)
@@ -50,7 +51,7 @@ class PostController extends Controller
         }
         else
         {
-            session()->flash('message', 'You cannot edit a post that does not belong to you!');
+            // session()->flash('message', 'You cannot edit a post that does not belong to you!');
             return redirect()->route('posts.show', $post);
         }
     }
@@ -66,7 +67,7 @@ class PostController extends Controller
         $post->body = $validatedData['body'];
         $post->save();
 
-        session()->flash('message', 'Post Edited.');
+        // session()->flash('message', 'Post Edited.');
         return redirect()->route('posts.show', $post);
     }
 
@@ -80,7 +81,7 @@ class PostController extends Controller
         }
         else
         {
-            session()->flash('message', 'You cannot delete a post that does not belong to you!');
+            // session()->flash('message', 'You cannot delete a post that does not belong to you!');
             return redirect()->route('posts.show', $post);
         }
     }
@@ -98,11 +99,22 @@ class PostController extends Controller
 
     public function like(Request $request, Post $post)
     {
-        $like = new Like;
-        $like->user_id = $post->id;
-        $post->likes()->save($like);
+        $likes = $post->likes()
+            ->where('likeable_id', $post->id)
+            ->where('user_id', Auth::id());
+
+        if ($likes->count() == 0)
+        {
+            $like = new Like;
+            $like->user_id = Auth::id();
+            $post->likes()->save($like);
+        }
+        else
+        {
+            session()->flash('message', 'You have already liked this comment!');
+        }
     
-        session()->flash('message', 'Post liked.');
+        // session()->flash('message', 'Post liked.');
         return redirect()->route('posts.show', $post);
     }
 }

@@ -32,7 +32,7 @@ class CommentController extends Controller
         $c->post_id = $post->id;
         $c->save();
 
-        session()->flash('message', 'Comment Created.');
+        // session()->flash('message', 'Comment Created.');
         return redirect()->route('posts.show', $post);
     }
 
@@ -58,11 +58,22 @@ class CommentController extends Controller
 
     public function like(Request $request, Comment $comment)
     {
-        $like = new Like;
-        $like->user_id = $comment->id;
-        $comment->likes()->save($like);
+        $likes = $comment->likes()
+            ->where('likeable_id', $comment->id)
+            ->where('user_id', Auth::id());
+
+        if ($likes->count() == 0)
+        {
+            $like = new Like;
+            $like->user_id = Auth::id();
+            $comment->likes()->save($like);
+        }
+        else
+        {
+            session()->flash('message', 'You have already liked this comment!');
+        }
     
-        session()->flash('message', 'Comment liked.');
+        // session()->flash('message', 'Comment liked.');
         return redirect()->route('posts.show', $comment->post_id);
     }
 }
