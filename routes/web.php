@@ -33,6 +33,7 @@ Route::post('posts/{post}/edit', [PostController::class, 'update'])->name('posts
 Route::post('likes/{post}', [PostController::class, 'like'])->name('posts.like');
 Route::post('likes/post/{comment}', [CommentController::class, 'like'])->name('comments.like');
 Route::post('posts/{post}', [CommentController::class, 'store'])->name('comments.store');
+Route::delete('posts/post/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 // Logging out
 // Route::get('users/index', [UserController::class, 'index'])->name('users.index');

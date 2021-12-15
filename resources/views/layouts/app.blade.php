@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <style>
-      p, h1, input[type="submit"] {
+
+      .margin, h1 {
         margin-left: 20px;
       }
 
@@ -16,13 +17,16 @@
 
         .iconDetails {
           margin-left:50px;
-          margin-right:50px;
-          float:left; 
           height:70px;
           width:70px; 
           border-radius: 50%;
           border: 2px solid #808080;
         } 
+
+        .image {
+          height:70px;
+          width:70px; 
+        }
 
         .right {
           position: fixed;
@@ -44,6 +48,22 @@
                 border-spacing:0 15px;
                 width:100%;
             }
+
+            .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
 
         .btn-group button {
   background-color: #04AA6D; /* Green background */
@@ -91,7 +111,7 @@
   <title>@yield('title')</title>
 
     </head>
-    <body class="font-sans antialiased">
+    <body>
 
           <!-- navigation bar -->
           <div class="comment">

@@ -51,9 +51,19 @@ class CommentController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        if (Auth::id() == $comment->user_id || auth()->user()->admin)
+        {
+            $comment->delete();
+            // session()->flash('message', 'Post was deleted!');
+            return redirect()->route('posts.index');
+        }
+        else
+        {
+            // session()->flash('message', 'You cannot delete a post that does not belong to you!');
+            return redirect()->route('posts.show', $comment->post_id);
+        }
     }
 
     public function like(Request $request, Comment $comment)
