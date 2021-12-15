@@ -102,10 +102,12 @@
                     <p>{{ $comment->text }}</p>
                 </td>
                 <td>
+                    <!--
                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                         @csrf
                         <a href="{{ route('posts.edit', $post) }}">EDIT</a>
                     </form>
+                    -->
                     <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

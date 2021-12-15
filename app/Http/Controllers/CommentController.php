@@ -57,13 +57,13 @@ class CommentController extends Controller
         {
             $comment->delete();
             // session()->flash('message', 'Post was deleted!');
-            return redirect()->route('posts.index');
         }
         else
         {
             // session()->flash('message', 'You cannot delete a post that does not belong to you!');
-            return redirect()->route('posts.show', $comment->post_id);
         }
+
+        return redirect()->route('posts.show', $comment->post_id);
     }
 
     public function like(Request $request, Comment $comment)
