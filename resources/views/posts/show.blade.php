@@ -12,7 +12,8 @@
             <col span="1" style="width: 10%;">
             <col span="1" style="width: 10%;">
             <col span="1" style="width: 10%;">
-            <col span="1" style="width: 60%;">
+            <col span="1" style="width: 55%;">
+            <col span="1" style="width: 5%;">
             <col span="1" style="width: 10%;">
         </colgroup>
 
@@ -45,6 +46,8 @@
                         @csrf
                         <a href="{{ route('posts.edit', $post) }}">EDIT</a>
                     </form>
+                </td>
+                <td>
                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -69,7 +72,8 @@
             <col span="1" style="width: 10%;">
             <col span="1" style="width: 10%;">
             <col span="1" style="width: 10%;">
-            <col span="1" style="width: 60%;">
+            <col span="1" style="width: 55%;">
+            <col span="1" style="width: 5%;">
             <col span="1" style="width: 10%;">
         </colgroup>
 
@@ -102,12 +106,12 @@
                     <p>{{ $comment->text }}</p>
                 </td>
                 <td>
-                    <!--
-                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                    <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                         @csrf
-                        <a href="{{ route('posts.edit', $post) }}">EDIT</a>
+                        <a href="{{ route('comments.edit', $comment) }}">EDIT</a>
                     </form>
-                    -->
+                </td>
+                <td>
                     <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

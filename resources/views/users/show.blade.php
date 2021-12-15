@@ -3,23 +3,24 @@
 @section('title', $user->name)
 
 @section('content')
-    <p><b>Profile Picture</b></p>
-    <img src="{{ asset('images/'.$user->id) }}" class="iconDetails">
+    <div class="margin">
 
-    <br><br><br>
+        <p><b>Profile Picture</b></p>
+        <img src="{{ asset('images/'.$user->id) }}" class="iconDetails">
+        <br><br>
 
-@if (Auth::id() == $user->id)
+        @if (Auth::id() == $user->id)
+            <form method="GET" action="{{ route('image.upload') }}">
+                @csrf
+                <input type="submit" value="UPDATE" class="btn btn-primary">
+            </form>
+        @endif
 
-    <form method="GET" action="{{ route('image.upload') }}">
-        @csrf
-        <input type="submit" value="UPDATE" class="btn btn-primary">
-    </form>
-
-@endif
-
-    <hr>
-    <p><b>Admin: </b>{{ $user->admin }}</p>
-    <p><b>Profile views: </b>X</p>
-    <p><b>Posts made: </b>{{ $user->posts->count() }}</p>
-    <p><b>Comments made: </b>{{ $user->comments->count() }}</p>
+        <hr>
+        <p><b>Admin: </b>{{ $user->admin }}</p>
+        <p><b>Profile views: </b>X</p>
+        <p><b>Posts made: </b>{{ $user->posts->count() }}</p>
+        <p><b>Comments made: </b>{{ $user->comments->count() }}</p>
+        
+    </div>
 @endsection

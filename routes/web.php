@@ -10,7 +10,7 @@ use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect('/posts');
+    return redirect('/image-upload');
 });
 
 Route::prefix('projects')->group(function () {
@@ -34,6 +34,8 @@ Route::post('likes/{post}', [PostController::class, 'like'])->name('posts.like')
 Route::post('likes/post/{comment}', [CommentController::class, 'like'])->name('comments.like');
 Route::post('posts/{post}', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('posts/post/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::get('posts/post/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+Route::post('posts/post/{comment}/edit', [CommentController::class, 'update'])->name('comments.update');
 
 // Logging out
 // Route::get('users/index', [UserController::class, 'index'])->name('users.index');

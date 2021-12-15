@@ -16,7 +16,6 @@
             }
 
         .iconDetails {
-          margin-left:50px;
           height:70px;
           width:70px; 
           border-radius: 50%;

@@ -41,14 +41,30 @@ class CommentController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+        if (Auth::id() == $comment->user_id || auth()->user()->admin)
+        {
+            return view('comments.edit', ['comment' => $comment]); 
+        }
+        else
+        {
+            // session()->flash('message', 'You cannot edit a comment that does not belong to you!');
+            return redirect()->route('posts.show', $comment->post_id);
+        }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $validatedData = $request->validate([
+            'text' => 'required|max:255',
+        ]);
+            
+        $comment->text = $validatedData['text'];
+        $comment->save();
+
+        // session()->flash('message', 'Comment Edited.');
+        return redirect()->route('posts.show', $comment->post_id);
     }
 
     public function destroy(Comment $comment)
