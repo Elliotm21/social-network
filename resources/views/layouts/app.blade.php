@@ -147,18 +147,20 @@
     <hr>
 
         @if ($errors->any())
-            <div>
+            <div class="margin">
                 Errors:
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                          <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
         @endif
 
         @if (session('message'))
+          <div class="margin">
             <p><b>{{ session('message') }}</b></p>
+          </div>
         @endif
 
         <div>

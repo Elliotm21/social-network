@@ -13,7 +13,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('body');
-            // $table->integer('views');
+            $table->integer('views');
             $table->timestamps();
 
             $table->foreignId('user_id')->references('id')->

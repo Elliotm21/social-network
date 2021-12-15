@@ -95,7 +95,7 @@
                     <img src="{{ asset('images/'.$comment->user->id) }}" class="iconDetails">
                 </td>
                 <td>
-                    <p><a href="{{ route('users.show', $comment->user) }}" style="display: inline">
+                    <p><a href="{{ route('users.show', $comment->user) }}">
                         {{$comment->user->name}}</a></p>
                     <div class="small-font">
                         ({{ date('d/m/Y H:i', strtotime($comment->created_at)) }})</div>

@@ -3,18 +3,15 @@
 @section('title', 'Image Upload')
 
 @section('content')
-<div class="container">
+<div class="margin">
      
-    <div class="panel panel-primary">
-        <h1><b>Upload a profile picture!</b></h1>
-      <div class="panel-body">
+        <p>Upload a profile picture!</p>
      
         @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
-        </div>
-        <img src="images/{{ Session::get('image') }}">
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+            </div>
         @endif
     
         @if (count($errors) > 0)

@@ -20,7 +20,7 @@ Route::prefix('projects')->group(function () {
 
 Route::resource('projects', ProjectController::class);
 
-// Posts
+// Post
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('posts', [PostController::class, 'store'])->name('posts.store');
@@ -29,7 +29,7 @@ Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.d
 Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 Route::post('posts/{post}/edit', [PostController::class, 'update'])->name('posts.update');
 
-// Comments
+// Comment
 Route::post('likes/{post}', [PostController::class, 'like'])->name('posts.like');
 Route::post('likes/post/{comment}', [CommentController::class, 'like'])->name('comments.like');
 Route::post('posts/{post}', [CommentController::class, 'store'])->name('comments.store');
@@ -37,17 +37,14 @@ Route::delete('posts/post/{comment}', [CommentController::class, 'destroy'])->na
 Route::get('posts/post/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
 Route::post('posts/post/{comment}/edit', [CommentController::class, 'update'])->name('comments.update');
 
-// Logging out
-// Route::get('users/index', [UserController::class, 'index'])->name('users.index');
+// User
 Route::post('logout', [UserController::class, 'logout'])->name('logout');
+Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('notifications/{user}', [UserController::class, 'show'])->name('notifications.show');
 
 // Image uploading
 Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
 Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
-
-// Profile
-Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
-Route::get('notifications/{user}', [UserController::class, 'show'])->name('notifications.show');
 
 // Notifications
 Route::get('send', [NotificationController::class, 'sendNotification'])->name('notification.send');
