@@ -11,8 +11,8 @@
         <colgroup>
             <col span="1" style="width: 10%;">
             <col span="1" style="width: 10%;">
-            <col span="1" style="width: 10%;">
-            <col span="1" style="width: 55%;">
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 50%;">
             <col span="1" style="width: 5%;">
             <col span="1" style="width: 10%;">
         </colgroup>
@@ -32,7 +32,7 @@
                     <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
                 </td>
                 <td>
-                    <p><a href="{{ route('users.show', $post->user) }}">{{$post->user->name}}</a></p>
+                    <div class="link"><a href="{{ route('users.show', $post->user) }}">{{$post->user->name}}</a></div>
                     <div class="small-font">
                         ({{ date('d/m/Y H:i', strtotime($post->created_at)) }})
                     </div>
@@ -71,8 +71,8 @@
         <colgroup>
             <col span="1" style="width: 10%;">
             <col span="1" style="width: 10%;">
-            <col span="1" style="width: 10%;">
-            <col span="1" style="width: 55%;">
+            <col span="1" style="width: 15%;">
+            <col span="1" style="width: 50%;">
             <col span="1" style="width: 5%;">
             <col span="1" style="width: 10%;">
         </colgroup>
@@ -95,8 +95,7 @@
                     <img src="{{ asset('images/'.$comment->user->id) }}" class="iconDetails">
                 </td>
                 <td>
-                    <p><a href="{{ route('users.show', $comment->user) }}">
-                        {{$comment->user->name}}</a></p>
+                    <div class="link"><a href="{{ route('users.show', $comment->user) }}">{{$comment->user->name}}</a></div>
                     <div class="small-font">
                         ({{ date('d/m/Y H:i', strtotime($comment->created_at)) }})</div>
                     </div>
@@ -137,7 +136,7 @@
         
         <form method="POST" action="{{ route('comments.store', $post) }}">
             @csrf
-            <p><textarea name="text" rows="3" cols="90">{{ old('text') }}</textarea></p>
+            <p><textarea name="text" rows="3" cols="135">{{ old('text') }}</textarea></p>
             <input type="submit" value="SUBMIT" class="btn btn-primary">
         </form>
 

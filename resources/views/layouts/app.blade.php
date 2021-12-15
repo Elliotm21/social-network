@@ -3,10 +3,11 @@
     <style>
 
       .margin, h1 {
-        margin-left: 20px;
+        margin-left: 220px;
       }
 
       table {
+        margin-left: 220px;
                 border-collapse: collapse;
             }
 
@@ -45,7 +46,7 @@
         .gfg {
                 border-collapse:separate;
                 border-spacing:0 15px;
-                width:100%;
+                width:80%;
             }
 
             .card {
@@ -97,10 +98,53 @@
     font-size: 12px;
   }
 
+  body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #F5F5F5;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.link {
+  text-decoration: none;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+
+.main {
+  margin-left: 20px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
     </style>
     <head>
         <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
@@ -112,28 +156,11 @@
     </head>
     <body>
 
-          <!-- navigation bar -->
-          <div class="comment">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 offset-sm-3 col-md-6 offset-md-3">
-        
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link" href="/posts">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/posts/create">New Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('users.show', Auth::user()) }}">My Profile</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  </div>
-  <!-- navigation bar ends here -->
+  <div class="sidenav">
+  <a href="/posts">Home</a>
+  <a href="/posts/create">New Post</a>
+  <a href="{{ route('users.show', Auth::user()) }}">My Profile</a>
+</div>
 
   <form method="POST" action="{{ route('logout') }}">
         @csrf

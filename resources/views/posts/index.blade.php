@@ -24,8 +24,8 @@
                         <br><br>
                     </td>
                     <td> <!-- Row 2 -->
-                        <p><a href="{{ route('users.show', $value->user) }}" style="display: inline">
-                            {{$value->user->name}}</a></p>
+                        <div class="link"><a href="{{ route('users.show', $value->user) }}">
+                            {{$value->user->name}}</a></div>
                         <div class="small-font">
                             ({{ date('d/m/Y H:i', strtotime($value->created_at)) }})
                         </div>

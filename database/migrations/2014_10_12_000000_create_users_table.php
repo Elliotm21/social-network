@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('admin')->default(1);
+            // $table->integer('views');
         });
     }
 
