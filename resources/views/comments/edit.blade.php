@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Post')
+@section('title', 'Edit Comment')
 
 @section('content')
     <div class="margin">

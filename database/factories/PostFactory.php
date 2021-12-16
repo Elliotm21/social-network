@@ -15,6 +15,7 @@ class PostFactory extends Factory
             'title' => $this->faker->text(),
             'body' => $this->faker->text(),
             'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+            'views' => $this->faker->unique()->number_between(0,1000),
         ];
     }
 }

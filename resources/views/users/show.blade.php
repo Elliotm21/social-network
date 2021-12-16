@@ -18,7 +18,7 @@
 
         <hr>
         <p><b>Admin: </b>{{ $user->admin }}</p>
-        <p><b>Profile views: </b>X</p>
+        <p><b>Profile views: </b>{{ $user->views }}</p>
         <p><b>Posts made: </b>{{ $user->posts->count() }}</p>
         <p><b>Comments made: </b>{{ $user->comments->count() }}</p>
         

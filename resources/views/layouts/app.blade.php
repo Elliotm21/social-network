@@ -40,7 +40,7 @@
         .logoutLblPos{
           position:fixed;
           right:10px;
-          top:5px;
+          top:10px;
         }
 
         .gfg {

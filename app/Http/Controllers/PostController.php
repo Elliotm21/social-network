@@ -12,7 +12,7 @@ class PostController extends Controller
     public function index()
     {
         // Pushes most recent posts to the top
-        $posts = Post::paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -42,7 +42,7 @@ class PostController extends Controller
     {
         $post->views = $post->views + 1;
         $post->save();
-        
+
         return view('posts.show', ['post' => $post]);
     }
 
