@@ -4,7 +4,7 @@
 
 @section('content')
 
-<table class="gfg">
+<table class="table1">
 
     <colgroup>
         <col span="1" style="width: 10%;">
@@ -18,23 +18,24 @@
         @if(!empty($posts) && $posts->count())
             @foreach($posts as $key => $value)
                 <tr>
-                    <td> <!-- Row 1 -->
+                    <td>
                         <br>
-                        <img src="{{ asset('images/'.$value->user->id) }}" class="iconDetails">
+                        <img src="{{ asset('images/'.$value->user->profilePicture->path) }}"
+                            class="iconDetails" alt="profile picture">
                         <br><br>
                     </td>
-                    <td> <!-- Row 2 -->
+                    <td>
                         <div class="link"><a href="{{ route('users.show', $value->user) }}">
                             {{$value->user->name}}</a></div>
                         <div class="small-font">
                             ({{ date('d/m/Y H:i', strtotime($value->created_at)) }})
                         </div>
                     </td>
-                    <td> <!-- Row 3 -->
+                    <td>
                         <br>
                         <p><a href="{{ route('posts.show', $value) }}">{{$value->title}}</a></b></p>
                     </td>
-                    <td> <!-- Row 4 -->
+                    <td>
                         <br>
                         <div class="small-font">
                             <p>{{ $value->views }} views</p>
@@ -63,6 +64,7 @@
 </table>
 
 <br>
+
 
 <div class="margin">
     {!! $posts->links() !!}

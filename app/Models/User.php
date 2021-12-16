@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->morphMany('App\Models\Like', 'commentable');
     }
+
+    public function profilePicture()
+    {
+        return $this->hasOne('App\Models\ProfilePicture');
+    }
 }

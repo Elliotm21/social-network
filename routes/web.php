@@ -21,21 +21,21 @@ Route::prefix('projects')->group(function () {
 Route::resource('projects', ProjectController::class);
 
 // Post
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
-Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
-Route::post('posts/{post}/edit', [PostController::class, 'update'])->name('posts.update');
+Route::get('/dashboard', [PostController::class, 'index'])->name('posts.index');
+Route::get('/dashboard/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/dashboard', [PostController::class, 'store'])->name('posts.store');
+Route::get('/dashboard/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::delete('/dashboard/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::get('/dashboard/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::post('/dashboard/{post}/edit', [PostController::class, 'update'])->name('posts.update');
 
 // Comment
 Route::post('likes/{post}', [PostController::class, 'like'])->name('posts.like');
 Route::post('likes/post/{comment}', [CommentController::class, 'like'])->name('comments.like');
-Route::post('posts/{post}', [CommentController::class, 'store'])->name('comments.store');
-Route::delete('posts/post/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
-Route::get('posts/post/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
-Route::post('posts/post/{comment}/edit', [CommentController::class, 'update'])->name('comments.update');
+Route::post('/dashboard/{post}', [CommentController::class, 'store'])->name('comments.store');
+Route::delete('/dashboard/post/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+Route::get('/dashboard/post/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+Route::post('/dashboard/post/{comment}/edit', [CommentController::class, 'update'])->name('comments.update');
 
 // User
 Route::post('logout', [UserController::class, 'logout'])->name('logout');
@@ -53,9 +53,5 @@ Route::get('send', [NotificationController::class, 'sendNotification'])->name('n
 Route::post('api', [APIController::class, 'index'])->name('api.index');
 
 Route::get('posts1', [PostController::class, 'page']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

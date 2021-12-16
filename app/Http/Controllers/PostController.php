@@ -35,7 +35,6 @@ class PostController extends Controller
         $p->save();
 
         return redirect()->route('posts.index');
-        // ->with('message', 'Post was created!');
     }
 
     public function show(Post $post)
@@ -117,7 +116,6 @@ class PostController extends Controller
             session()->flash('message', 'You have already liked this comment!');
         }
     
-        // session()->flash('message', 'Post liked.');
         return redirect()->route('posts.show', $post);
     }
 }

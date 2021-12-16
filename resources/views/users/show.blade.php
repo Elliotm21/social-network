@@ -6,7 +6,10 @@
     <div class="margin">
 
         <p><b>Profile Picture</b></p>
-        <img src="{{ asset('images/'.$user->id) }}" class="iconDetails">
+
+        <img src="{{ asset('images/'.$user->profilePicture->path) }}"
+            class="iconDetails" alt="profile picture">
+        
         <br><br>
 
         @if (Auth::id() == $user->id)
@@ -17,10 +20,14 @@
         @endif
 
         <hr>
-        <p><b>Admin: </b>{{ $user->admin }}</p>
-        <p><b>Profile views: </b>{{ $user->views }}</p>
-        <p><b>Posts made: </b>{{ $user->posts->count() }}</p>
-        <p><b>Comments made: </b>{{ $user->comments->count() }}</p>
-        
+
+        @if ($user->admin == 1)
+            <p><b>Admin account</b></p>
+        @endif
+
+        <p>{{ $user->views }} views</p>
+        <p>{{ $user->posts->count() }} posts made</p>
+        <p>{{ $user->comments->count() }} comments made</p>
+
     </div>
 @endsection

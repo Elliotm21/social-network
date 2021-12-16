@@ -4,9 +4,9 @@
 
 @section('content')
 
-<!-- POST -->
+    <!-- POST -->
 
-    <table class="gfg">
+    <table class="table1">
 
         <colgroup>
             <col span="1" style="width: 10%;">
@@ -29,7 +29,8 @@
                     <br>
                 </td>
                 <td>
-                    <img src="{{ asset('images/'.$post->user->id) }}" class="iconDetails">
+                    <img src="{{ asset('images/'.$post->user->profilePicture->path) }}"
+                        class="iconDetails" alt="profile picture">
                 </td>
                 <td>
                     <div class="link"><a href="{{ route('users.show', $post->user) }}">{{$post->user->name}}</a></div>
@@ -66,7 +67,7 @@
         <p><b>Comments ({{ $post->comments->count() }})</b></p>
     </div>
 
-    <table class="gfg">
+    <table class="table1">
 
         <colgroup>
             <col span="1" style="width: 10%;">
@@ -92,7 +93,7 @@
                     <br>
                 </td>
                 <td>
-                    <img src="{{ asset('images/'.$comment->user->id) }}" class="iconDetails">
+                    <img src="{{ asset('images/'.$comment->user->id) }}" class="iconDetails" alt="profile picture">
                 </td>
                 <td>
                     <div class="link"><a href="{{ route('users.show', $comment->user) }}">{{$comment->user->name}}</a></div>
@@ -136,7 +137,7 @@
         
         <form method="POST" action="{{ route('comments.store', $post) }}">
             @csrf
-            <p><textarea name="text" rows="3" cols="135">{{ old('text') }}</textarea></p>
+            <p><textarea name="text" rows="3" cols="135"></textarea></p>
             <input type="submit" value="SUBMIT" class="btn btn-primary">
         </form>
 

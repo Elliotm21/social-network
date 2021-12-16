@@ -7,7 +7,7 @@
         <form method="POST" action="{{ route('comments.update', $comment->id) }}">
             @csrf
             <p><b>Text</b></p>
-            <p><input type="text" name="text" value="{{ $comment->text }}"></p>
+            <p><textarea name="text" rows="1" cols="135">{{ $comment->text }}</textarea></p>
             <input type="submit" value="SUBMIT" class="btn btn-primary">
             <a href="{{ route('posts.show', $comment->post_id) }}">Back</a>
         </form>
