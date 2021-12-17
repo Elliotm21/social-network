@@ -53,7 +53,7 @@ class PostController extends Controller
         }
         else
         {
-            // session()->flash('message', 'You cannot edit a post that does not belong to you!');
+            session()->flash('message', 'You cannot edit a post that does not belong to you!');
             return redirect()->route('posts.show', $post);
         }
     }
@@ -83,20 +83,9 @@ class PostController extends Controller
         }
         else
         {
-            // session()->flash('message', 'You cannot delete a post that does not belong to you!');
+            session()->flash('message', 'You cannot delete a post that does not belong to you!');
             return redirect()->route('posts.show', $post);
         }
-    }
-
-    public function page()
-    {
-        return view('index1');
-    }
-
-    public function apiIndex()
-    {
-        $posts = Post::all();
-        return $posts;
     }
 
     public function like(Request $request, Post $post)

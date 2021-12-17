@@ -6,6 +6,10 @@
       margin-left: 220px;
     }
 
+    h1 {
+      font-family: Georgia, serif;
+    }
+
     table {
       margin-left: 220px;
       border-collapse: collapse;
@@ -23,6 +27,13 @@
       border: 2px solid #808080;
     } 
 
+    .iconDetails2 {
+      height:100px;
+      width:100px; 
+      border-radius: 50%;
+      border: 2px solid #808080;
+    } 
+
     .container2 {
       width:100%;
     }
@@ -31,6 +42,12 @@
       border-collapse:separate;
       border-spacing:0 15px;
       width:80%;
+    }
+
+    .table2 {
+      border-collapse:separate;
+      border-spacing:0 15px;
+      width:40%;
     }
 
     .comment {
@@ -59,10 +76,14 @@
       font-size: 20px;
       color: #818181;
       display: block;
+      font-family: Georgia, serif;
     }
 
     .logout-button {
-      padding: 6px 6px 6px 32px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      position: fixed;
+      bottom: 0px;
     }
 
     .sidenav a:hover {
@@ -101,12 +122,10 @@
       <a href="/dashboard">Home</a>
       <a href="/dashboard/create">New Post</a>
       <a href="{{ route('users.show', Auth::user()) }}">My Profile</a>
-      <br>
-
       <form method="POST" action="{{ route('logout') }}">
         @csrf
         <div class="logout-button">
-          <input type="submit" value="LOG OUT">
+          <input type="submit" value="LOG OUT" class="btn btn-secondary">
         </div>
       </form>
     </div>

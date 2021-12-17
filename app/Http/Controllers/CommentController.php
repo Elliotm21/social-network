@@ -10,16 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request, Post $post)
     {
         $validatedData = $request->validate([
@@ -36,11 +26,6 @@ class CommentController extends Controller
         return redirect()->route('posts.show', $post);
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit(Comment $comment)
     {
         if (Auth::id() == $comment->user_id || auth()->user()->admin)
@@ -49,7 +34,7 @@ class CommentController extends Controller
         }
         else
         {
-            // session()->flash('message', 'You cannot edit a comment that does not belong to you!');
+            session()->flash('message', 'You cannot edit a comment that does not belong to you!');
             return redirect()->route('posts.show', $comment->post_id);
         }
     }
@@ -76,7 +61,7 @@ class CommentController extends Controller
         }
         else
         {
-            // session()->flash('message', 'You cannot delete a post that does not belong to you!');
+            session()->flash('message', 'You cannot delete a post that does not belong to you!');
         }
 
         return redirect()->route('posts.show', $comment->post_id);
@@ -99,7 +84,6 @@ class CommentController extends Controller
             session()->flash('message', 'You have already liked this comment!');
         }
     
-        // session()->flash('message', 'Comment liked.');
         return redirect()->route('posts.show', $comment->post_id);
     }
 }

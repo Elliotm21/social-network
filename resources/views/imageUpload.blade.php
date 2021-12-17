@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Image Upload')
+@section('title', 'Upload Profile Picture')
 
 @section('content')
 <div class="margin">
-     
-        <p>Upload a profile picture!</p>
      
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
@@ -33,9 +31,7 @@
                     <input type="file" name="image" class="form-control">
                 </div>
      
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-success">Upload</button>
-                </div>
+                <button type="submit" class="btn btn-secondary">UPLOAD</button>
      
             </div>
         </form>

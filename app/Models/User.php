@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->morphMany('App\Models\Like', 'commentable');
+        return $this->morphMany('App\Models\Like', 'likeable');
     }
 
     public function profilePicture()
