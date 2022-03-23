@@ -5,7 +5,6 @@
 @section('content')
     <div class="margin">
         <form method="POST" action="{{ route('comments.update', $comment->id) }}">
-            @csrf
             <p><b>Text</b></p>
             <p><textarea name="text" rows="1" cols="135">{{ $comment->text }}</textarea></p>
             <input type="submit" value="SUBMIT" class="btn btn-primary">

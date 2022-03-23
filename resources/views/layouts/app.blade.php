@@ -121,7 +121,6 @@
       <br>
       <a href="/dashboard">Home</a>
       <a href="/dashboard/create">New Post</a>
-      <a href="{{ route('users.show', Auth::user()) }}">My Profile</a>
       <form method="POST" action="{{ route('logout') }}">
         @csrf
         <div class="logout-button">
